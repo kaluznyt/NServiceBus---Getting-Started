@@ -30,8 +30,6 @@ namespace ClientUI
                     .ConfigureAwait(false);
         }
 
-
-
         static async Task RunLoop(IEndpointInstance endpointInstance)
         {
             while (true)

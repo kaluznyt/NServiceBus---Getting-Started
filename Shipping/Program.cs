@@ -21,18 +21,5 @@ namespace Shipping
 
             await endpointInstance.Stop().ConfigureAwait(false);
         }
-
-        private static async Task<IEndpointInstance> CreateEndpoint(string endpointName)
-        {
-            Console.Title = endpointName;
-
-            var endpointConfiguration = new EndpointConfiguration(endpointName);
-
-            var transport = endpointConfiguration.UseTransport<LearningTransport>();
-
-            var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
-
-            return endpointInstance;
-        }
     }
 }

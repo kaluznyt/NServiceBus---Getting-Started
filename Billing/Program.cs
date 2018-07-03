@@ -23,21 +23,5 @@ namespace Billing
 
             await endpointInstance.Stop().ConfigureAwait(false);
         }
-
-        private static async Task<IEndpointInstance> CreateEndpoint(string endpointName)
-        {
-            Console.Title = endpointName;
-
-            var endpointConfiguration = new EndpointConfiguration(endpointName);
-
-            var transport = endpointConfiguration.UseTransport<MsmqTransport>();
-            endpointConfiguration.UsePersistence<InMemoryPersistence>();
-            endpointConfiguration.SendFailedMessagesTo("error");
-            endpointConfiguration.EnableInstallers();
-
-            var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
-
-            return endpointInstance;
-        }
     }
 }
